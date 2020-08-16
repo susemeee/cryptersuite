@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptersuite</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="fp.js"></script>
+    <script>
+        if (!window.Fingerprint2) {
+            var msg = 'Please turn off adblocker. Thank you.';
+            alert(msg);
+            throw new Error(msg);
+        }
+        window.Fingerprint2.get(function (components) {
+            var values = components.map(function (component) { return component.value });
+            var murmur = Fingerprint2.x64hash128(values.join(''), 31);
+            document.querySelector('input[name="key"]').value = murmur;
+        });
+    </script>
+</head>
+<body>
+    <form id="form" action="/" method="POST">
+        <h3>Cryptersuite</h3>
+        <input type="hidden" name="key" value="_none_">
+        <input type="text" name="alias" placeholder="Your name or nickname" required>
+        <input type="submit" value="Post">
+    </form>
+</body>
+</html>
