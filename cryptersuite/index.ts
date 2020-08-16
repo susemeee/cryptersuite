@@ -72,7 +72,7 @@ export default async function run(approveKey: string, port = 8000) {
     const { masterKey = '' } = helpers.getQuery(context);
     if (!alias) {
       throw httpErrors.BadRequest;
-    } if (masterKey !== approveKey) {
+    } else if (masterKey !== approveKey) {
       throw httpErrors.Unauthorized;
     } else {
       await approve(alias);
