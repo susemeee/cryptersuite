@@ -12,7 +12,8 @@
             alert(msg);
             throw new Error(msg);
         }
-        window.Fingerprint2.get(function (components) {
+        var options = { excludes: { deviceMemory: true, enumerateDevices: true } };
+        window.Fingerprint2.get(options, function (components) {
             var values = components.map(function (component) { return component.value });
             var murmur = Fingerprint2.x64hash128(values.join(''), 31);
             document.querySelector('input[name="key"]').value = murmur;
