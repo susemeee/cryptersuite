@@ -1,3 +1,3 @@
 #!/bin/sh
 
-CODE_PATH='./assets/code.js' deno run --allow-read --allow-net --allow-env ./index.ts
+APPROVE_KEY='approvekey' CODE_PATH='./assets/code.js' deno run --allow-read --allow-write --allow-net --allow-env ./index.ts
